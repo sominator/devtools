@@ -11,7 +11,7 @@ export default class Dealer {
             } else {
                 playerSprite = 'magentaCardFront';
                 opponentSprite = 'cyanCardBack';
-            };
+            }
             for (let i = 0; i < 5; i++) {
                 let playerCard = new Card(scene);
                 playerCard.render(475 + (i * 100), 650, playerSprite);

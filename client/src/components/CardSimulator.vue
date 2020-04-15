@@ -1,7 +1,9 @@
 <template>
-    <div :id="containerId" v-if="downloaded" />
-    <div class="placeholder" v-else>
-        Downloading ...
+    <div id="card-simulator">
+        <div :id="containerId" v-if="downloaded" />
+        <div class="placeholder" v-else>
+            Downloading ...
+        </div>
     </div>
 </template>
 
@@ -29,4 +31,7 @@
 </script>
 
 <style scoped>
+    #card-simulator{
+        margin-top: 20px;
+    }
 </style>

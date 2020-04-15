@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 import io from 'socket.io-client';
-import Card from '../helpers/card';
-import Dealer from "../helpers/dealer";
-import Zone from '../helpers/zone';
+import Card from '../helpers/multiplayer/card';
+import Dealer from "../helpers/multiplayer/dealer";
+import Zone from '../helpers/multiplayer/zone';
 const cyanCardFront = require('../assets/CyanCardFront.png');
 const cyanCardBack = require('../assets/CyanCardBack.png');
 const magentaCardFront = require('../assets/MagentaCardFront.png');
@@ -11,7 +11,7 @@ const magentaCardBack = require('../assets/MagentaCardBack.png');
 export default class Multiplayer extends Phaser.Scene {
     constructor() {
         super({
-            key: 'Game'
+            key: 'Multiplayer'
         });
     }
 

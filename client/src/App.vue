@@ -1,7 +1,9 @@
 <template>
     <div id="app">
-        <DiceRoller />
-        <CardSimulator />
+        <button v-on:click="toggle = 'dice roller'">Dice Roller</button>
+        <button v-on:click="toggle = 'card simulator'">Card Simulator</button>
+        <DiceRoller v-show="toggle == 'dice roller'" />
+        <CardSimulator v-show="toggle == 'card simulator'"/>
     </div>
 </template>
 
@@ -14,6 +16,11 @@
         components: {
             DiceRoller,
             CardSimulator
+        },
+        data: function () {
+            return {
+                toggle: "dice roller"
+            }
         }
     }
 </script>

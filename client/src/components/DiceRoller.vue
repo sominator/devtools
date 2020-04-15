@@ -1,14 +1,21 @@
 <template>
-    <div id="dice">
-        <button v-on:click="rolld2">Roll d2</button>
-        <button v-on:click="rolld4">Roll d4</button>
-        <button v-on:click="rolld6">Roll d6</button>
-        <button v-on:click="rolld8">Roll d8</button>
-        <button v-on:click="rolld10">Roll d10</button>
-        <button v-on:click="rolld12">Roll d12</button>
-        <button v-on:click="rolld20">Roll d20</button>
-        <button v-on:click="rolld100">Roll d100</button>
-        <p>{{response}}</p>
+    <div id="dice-roller">
+        <div id="input">
+            <h2>Input</h2>
+            <p>x = <input type="number" :placeholder="x" v-model="x"/> y = <input type="number" :placeholder="y" v-model="y"/></p>
+            <p>Roll xd2 + y <button v-on:click="roll(2)">Roll it!</button></p>
+            <p>Roll xd4 + y <button v-on:click="roll(4)">Roll it!</button></p>
+            <p>Roll xd6 + y <button v-on:click="roll(6)">Roll it!</button></p>
+            <p>Roll xd8 + y <button v-on:click="roll(8)">Roll it!</button></p>
+            <p>Roll xd10 + y <button v-on:click="roll(10)">Roll it!</button></p>
+            <p>Roll xd12 + y <button v-on:click="roll(12)">Roll it!</button></p>
+            <p>Roll xd20 + y <button v-on:click="roll(20)">Roll it!</button></p>
+            <p>Roll xd100 + y <button v-on:click="roll(100)">Roll it!</button></p>
+        </div>
+        <div id="output">
+            <h2>Output</h2>
+            <p v-for="(item, index) in response" :key="index">{{item}}</p>
+        </div>
     </div>
 </template>
 
@@ -17,33 +24,16 @@
         name: 'DiceRoller',
         data: function () {
             return {
-                response: null
+                response: [],
+                x: 1,
+                y: 0
+
             }
         },
         methods: {
-            rolld2: function () {
-                this.response = (Math.floor(1 + (Math.random() * 2)));
-            },
-            rolld4: function () {
-                this.response = (Math.floor(1 + (Math.random() * 4)));
-            },
-            rolld6: function () {
-                this.response = (Math.floor(1 + (Math.random() * 6)));
-            },
-            rolld8: function () {
-                this.response = (Math.floor(1 + (Math.random() * 8)));
-            },
-            rolld10: function () {
-                this.response = (Math.floor(1 + (Math.random() * 10)));
-            },
-            rolld12: function () {
-                this.response = (Math.floor(1 + (Math.random() * 12)));
-            },
-            rolld20: function () {
-                this.response = (Math.floor(1 + (Math.random() * 20)));
-            },
-            rolld100: function () {
-                this.response = (Math.floor(1 + (Math.random() * 100)));
+            roll: function (num) {
+                let result = ((Math.floor(1 + (Math.random() * num)) * this.x) + parseInt(this.y));
+                this.response.push("Rolled " + this.x + "d" + num + " + " + this.y + " = " + result);
             }
         }
     }
@@ -51,22 +41,24 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-    h3 {
-        margin: 40px 0 0;
+    #dice-roller {
+        display: flex;
+        justify-content: center;
     }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
+    #input {
+        display: flex;
+        flex-direction: column;
+        max-width: 1000px;
+        border-right: 2px solid black;
+        padding: 10px;
+        margin-top: 10px;
+        margin-right: 20px;
     }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
+    #output {
+        max-width: 1000px;
+        margin-top: 20px;
     }
-
-    a {
-        color: #42b983;
+    input {
+        width: 50px;
     }
 </style>

@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import Multiplayer from "./scenes/multiplayer"
+import Multiplayer from "./scenes/multiplayer";
+import Sandbox from "./scenes/sandbox";
 
 function launch(containerId) {
     const config = {
@@ -8,6 +9,7 @@ function launch(containerId) {
         height: 780,
         parent: containerId,
         scene: [
+            Sandbox,
             Multiplayer
         ]
     };
