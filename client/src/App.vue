@@ -1,25 +1,29 @@
 <template>
     <div id="app">
-        <button v-on:click="toggle = 'dice roller'">Dice Roller</button>
-        <button v-on:click="toggle = 'card simulator'">Card Simulator</button>
-        <DiceRoller v-show="toggle == 'dice roller'" />
-        <CardSimulator v-show="toggle == 'card simulator'"/>
+        <button v-on:click="toggle = 'mechanics'">Mechanics</button>
+        <button v-on:click="toggle = 'npcs'">NPCs</button>
+        <button v-on:click="toggle = 'locations'">Locations</button>
+        <Mechanics v-show="toggle == 'mechanics'" />
+        <NPCs v-show="toggle == 'npcs'" />
+        <Locations v-show="toggle == 'locations'"/>
     </div>
 </template>
 
 <script>
-    import DiceRoller from './components/DiceRoller.vue';
-    import CardSimulator from './components/CardSimulator.vue';
+    import Mechanics from './components/Mechanics.vue';
+    import NPCs from './components/NPCs.vue';
+    import Locations from './components/Locations.vue';
 
     export default {
         name: 'App',
         components: {
-            DiceRoller,
-            CardSimulator
+            Mechanics,
+            NPCs,
+            Locations
         },
         data: function () {
             return {
-                toggle: "dice roller"
+                toggle: "mechanics"
             }
         }
     }
