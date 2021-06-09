@@ -2,13 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\client",
-    "\\client\\public",
     "\\client\\src",
     "\\client\\src\\components",
-    "\\client\\src\\game",
-    "\\client\\src\\game\\helpers",
-    "\\client\\src\\game\\scenes"
+    "\\client\\src\\components\\modals"
   ],
-  "SelectedNode": "\\client\\src\\game\\scenes\\sandbox.js",
+  "SelectedNode": "\\client\\src\\components\\CardSimulator.vue",
   "PreviewInSolutionExplorer": false
 }

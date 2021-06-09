@@ -1,11 +1,15 @@
 <template>
     <div id="app">
-        <button v-on:click="toggle = 'mechanics'">Mechanics</button>
-        <button v-on:click="toggle = 'npcs'">NPCs</button>
-        <button v-on:click="toggle = 'locations'">Locations</button>
-        <Mechanics v-show="toggle == 'mechanics'" />
-        <NPCs v-show="toggle == 'npcs'" />
-        <Locations v-show="toggle == 'locations'"/>
+        <b-button-group>
+            <b-button variant="primary" v-on:click="toggle = 'mechanics'">Mechanics</b-button>
+            <b-button variant="primary" v-on:click="toggle = 'npcs'">NPCs</b-button>
+            <b-button variant="primary" v-on:click="toggle = 'locations'">Locations</b-button>
+            <b-button variant="primary" v-on:click="toggle = 'diceroller'">Dice Roller</b-button>
+        </b-button-group>
+        <Mechanics v-show="toggle === 'mechanics'" />
+        <NPCs v-show="toggle === 'npcs'" />
+        <Locations v-show="toggle === 'locations'"/>
+        <DiceRoller v-show="toggle === 'diceroller'" />
     </div>
 </template>
 
@@ -13,13 +17,15 @@
     import Mechanics from './components/Mechanics.vue';
     import NPCs from './components/NPCs.vue';
     import Locations from './components/Locations.vue';
+    import DiceRoller from './components/DiceRoller.vue';
 
     export default {
         name: 'App',
         components: {
             Mechanics,
             NPCs,
-            Locations
+            Locations,
+            DiceRoller
         },
         data: function () {
             return {
