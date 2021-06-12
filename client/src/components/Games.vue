@@ -1,85 +1,49 @@
 <template>
     <div>
-        <div id="games-container" v-bind:class="{'modal-showing': modalToggle===true}" v-show="toggle==='viewGamesContainer'">
-            <div id="game-generator">
-                <p><b-button pill variant="secondary" v-on:click="modalToggle = 'createGame'">+ Create Game</b-button></p>
+        <div id="games-container" v-bind:class="{'modal-showing': this.$store.state.modalState}">
+            <div v-show="toggle === 'allGames'">
+                <p><b-button pill variant="secondary" v-on:click="displayModal('createGame')">+ Create Game</b-button></p>
+                <div id="all-games">
+                    <b-card-group deck>
+                        <Game v-for="game in this.$store.state.games" :key="game.id" :game="game" @selectGame="selectGame" />
+                    </b-card-group>
+                </div>
             </div>
-            <div id="games">
-                <b-card-group deck>
-                    <Game v-for="game in games" :key="game.id" :game="game" @selectGame="selectGame"/>
-                </b-card-group>
+            <div v-show="toggle === 'viewGame'">
+                <div id="view-game">
+                    <p><b-button pill variant="secondary" v-on:click="changeToggle('allGames')">Back to Games</b-button></p>
+                    <Containers @displayModal = "displayModal" />
+                </div>
             </div>
-        </div>
-        <div id="modal" v-show="modalToggle !== null">
-            <CreateGame @createGame = "createGame" @cancelModal="cancelModal" v-show="modalToggle==='createGame'"/>
-            <CreateContainer @createContainer ="createContainer" @cancelModal="cancelModal" v-show="modalToggle==='createContainer'"/>
-        </div>
-        <div id="game-display" v-show="toggle==='viewGame'">
-            <p><b-button pill variant="secondary" v-on:click="toggle='viewGamesContainer'">Back to Games</b-button></p>
-            <p><b-button pill variant="secondary" v-on:click="modalToggle='createContainer'">+ Create Container</b-button></p>
-            <b-card-group deck>
-                <Container v-for="container in games[currentGame]" :key="container.id" :container="container" @selectContainer="selectContainer"/>
-            </b-card-group>
         </div>
     </div>
 </template>
 
 <script>
     import Game from './Game.vue';
-    import Container from './Container.vue';
-    import CreateGame from './modals/CreateGame.vue';
-    import CreateContainer from './modals/CreateContainer.vue';
+    import Containers from './Containers.vue';
 
     export default {
         name: 'Games',
         components: {
             Game,
-            Container,
-            CreateGame,
-            CreateContainer
+            Containers
         },
         data: function () {
             return {
-                toggle: "viewGamesContainer",
-                modalToggle: null,
-                gamesId: 0,
-                games: {
-
-                },
-                currentGame: null
+                toggle: "allGames"
             }
         },
         methods: {
-            cancelModal: function () {
-                this.modalToggle = null;
+            changeToggle: function (toggleName) {
+                this.toggle = toggleName;
             },
-            createGame: function (game) {
-                this.games[this.gamesId] = {
-                    id: this.gamesId,
-                    name: game.name,
-                    description: game.description,
-                    containersId: 0
-                };
-                this.gamesId++;
-                this.cancelModal();
-                console.log(this.games);
+            displayModal: function (modalName) {
+                this.$emit('displayModal', modalName)
             },
-            createContainer: function (container) {
-                let game = this.games[this.currentGame];
-                console.log(game);
-                game.containers[game.containersId] = {
-                    id: game.containersId,
-                    name: container.name,
-                    description: container.description,
-                    mechanicsId: 0
-                };
-                game.containersId++;
-                this.cancelModal();
-                console.log(this.games);
-            },
-            selectGame: function (id) {
-                this.toggle = "viewGame";
-                this.currentGame = id;
+            selectGame: function (gameId) {
+                this.changeToggle("viewGame");
+                this.$store.commit("selectGame", gameId);
             }
         }
     }
@@ -89,22 +53,12 @@
     .modal-showing {
         opacity: 0.3;
     }
-    #modal {
-        position: fixed;
-        bottom: 35%;
-        left: 35%;
-    }
-    #games-container {
-        text-align: left;
-        margin-top: 20px;
-        margin-left: 20px;
-    }
     #game-display {
         text-align: left;
         margin-top: 20px;
         margin-left: 20px;
     }
-    games {
+    #all-games {
         text-align: center;
         display: flex;
     }

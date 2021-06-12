@@ -15,11 +15,11 @@
     export default {
         name: 'Container',
         props: {
-            game: Object
+            container: Object
         },
         methods: {
             selectContainer: function () {
-                this.$emit("selectContainer");
+                this.$emit("selectContainer", this.container.id);
             }
         }
     }
