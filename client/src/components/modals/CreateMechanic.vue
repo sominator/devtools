@@ -8,11 +8,19 @@
                 <b-form-input id="input-2" v-model="mechanic.description" placeholder="e.g. 'New Mechanic'" required></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-3" label="Dice Model:" label-for="input-3">
-                <b-form inline>
-                    <b-form-spinbutton v-model="mechanic.x" min="1" max="100"></b-form-spinbutton>
-                    <b-form-select id="input-3" v-model="mechanic.diceModel" :options="diceModels" required></b-form-select>
-                    <b-form-spinbutton v-model="mechanic.y" min="-100" max="100"></b-form-spinbutton>
-                </b-form>
+                <b-container fluid>
+                    <b-row no-gutters>
+                        <b-col sm="auto">
+                            <b-form-spinbutton v-model="mechanic.x" min="1" max="100" required></b-form-spinbutton>
+                        </b-col>
+                        <b-col sm="auto">
+                            <b-form-select v-model="mechanic.diceModel" :options="diceModels" required></b-form-select>
+                        </b-col>
+                        <b-col sm="auto">
+                            <b-form-spinbutton v-model="mechanic.y" min="-100" max="100" required></b-form-spinbutton>
+                        </b-col>
+                    </b-row>
+                </b-container>
             </b-form-group>
             <b-button type="submit" variant="info">Add Mechanic</b-button>
             <b-button variant="danger" @click="onCancel">Cancel</b-button>
@@ -64,5 +72,8 @@
         border-radius: 10px;
         color: white;
         padding: 10px;
+    }
+    button {
+        margin-right: 10px;
     }
 </style>

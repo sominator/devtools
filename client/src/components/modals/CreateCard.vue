@@ -1,13 +1,13 @@
 <template>
-    <div id="create-game">
+    <div id="create-card">
         <b-form @submit="onSubmit">
-            <b-form-group id="input-group-1" label="Game Name:" label-for="input-1">
-                <b-form-input id="input-1" v-model="game.name" placeholder="e.g. 'Game 1'" required></b-form-input>
+            <b-form-group id="input-group-1" label="Card Name:" label-for="input-1">
+                <b-form-input id="input-1" v-model="card.name" placeholder="e.g. 'Card 1'" required></b-form-input>
             </b-form-group>
-            <b-form-group id="input-group-2" label="Game Description:" label-for="input-2">
-                <b-form-input id="input-2" v-model="game.description" placeholder="e.g. 'New Game'" required></b-form-input>
+            <b-form-group id="input-group-2" label="Card Description:" label-for="input-2">
+                <b-form-input id="input-2" v-model="card.description" placeholder="e.g. 'New Card'" required></b-form-input>
             </b-form-group>
-            <b-button type="submit" variant="info">Add Game</b-button>
+            <b-button type="submit" variant="info">Add Card</b-button>
             <b-button variant="danger" @click="onCancel">Cancel</b-button>
         </b-form>
     </div>
@@ -15,10 +15,10 @@
 
 <script>
     export default {
-        name: 'CreateGame',
+        name: 'CreateCard',
         data: function () {
             return {
-                game: {
+                card: {
                     name: '',
                     description: ''
                 }
@@ -27,7 +27,7 @@
         methods: {
             onSubmit(event) {
                 event.preventDefault();
-                this.$emit("createGame", this.game);
+                this.$emit("createCard", this.card);
             },
             onCancel(event) {
                 event.preventDefault();
@@ -38,7 +38,7 @@
 </script>
 
 <style scoped>
-    #create-game {
+    #create-card {
         background-color: #6c757d;
         border-radius: 10px;
         color: white;

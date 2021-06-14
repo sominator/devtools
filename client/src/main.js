@@ -31,26 +31,44 @@ const store = new Vuex.Store({
                 name: game.name,
                 description: game.description,
                 containersId: 0,
-                containers: {},
-                decksId: 0,
-                decks: {}
+                containers: {}
             };
             state.gamesId++;
             console.log(state.games);
         },
-        createContainer (state, container) {
-            store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
-                id: store.getters.selectedGame.containersId,
-                name: container.name,
-                description: container.description,
-                mechanicsId: 0,
-                mechanics: {}
+        createContainer(state, container) {
+            if (container.type === "mechanics-group") {
+                store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
+                    id: store.getters.selectedGame.containersId,
+                    name: container.name,
+                    description: container.description,
+                    type: container.type,
+                    mechanicsId: 0,
+                    mechanics: {}
+                }
+            } else if (container.type === "deck") {
+                store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
+                    id: store.getters.selectedGame.containersId,
+                    name: container.name,
+                    description: container.description,
+                    type: container.type,
+                    decksId: 0,
+                    decks: {}
+                }
             }
             store.getters.selectedGame.containersId++;
             console.log(state.games);
         },
+        createCard(state, card) {
+            store.getters.selectedContainer.decks[store.getters.selectedContainer.decksId] = {
+                id: store.getters.selectedContainer.decksId,
+                name: card.name,
+                description: card.description
+            }
+            store.getters.selectedContainer.decksId++;
+            console.log(state.games);
+        },
         createMechanic(state, mechanic) {
-            console.log(store.getters.selectedContainer);
             store.getters.selectedContainer.mechanics[store.getters.selectedContainer.mechanicsId] = {
                 id: store.getters.selectedContainer.mechanicsId,
                 name: mechanic.name,

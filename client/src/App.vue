@@ -4,9 +4,10 @@
             <Games @displayModal = "displayModal" />
         </div>
         <div id="modal-container" v-show="modalToggle != null">
-            <CreateGame v-if="modalToggle === 'createGame'" @createGame = "createGame" @cancelModal = "cancelModal" />
-            <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer = "createContainer" @cancelModal = "cancelModal" />
-            <CreateMechanic v-else-if="modalToggle === 'createMechanic'" @createMechanic = "createMechanic" @cancelModal = "cancelModal" />
+            <CreateGame v-if="modalToggle === 'createGame'" @createGame="createGame" @cancelModal="cancelModal" />
+            <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer="createContainer" @cancelModal="cancelModal" />
+            <CreateCard v-else-if="modalToggle === 'createCard'" @createCard="createCard" @cancelModal="cancelModal" />
+            <CreateMechanic v-else-if="modalToggle === 'createMechanic'" @createMechanic="createMechanic" @cancelModal="cancelModal" />
         </div>
     </div>
 </template>
@@ -15,6 +16,7 @@
     import Games from './components/Games.vue';
     import CreateGame from './components/modals/CreateGame.vue';
     import CreateContainer from './components/modals/CreateContainer.vue';
+    import CreateCard from './components/modals/CreateCard.vue';
     import CreateMechanic from './components/modals/CreateMechanic.vue';
 
     export default {
@@ -23,6 +25,7 @@
             Games,
             CreateGame,
             CreateContainer,
+            CreateCard,
             CreateMechanic
         },
         data: function () {
@@ -41,6 +44,10 @@
             },
             createContainer: function (container) {
                 this.$store.commit('createContainer', container);
+                this.cancelModal();
+            },
+            createCard: function (card) {
+                this.$store.commit('createCard', card);
                 this.cancelModal();
             },
             createMechanic: function (mechanic) {
@@ -69,7 +76,7 @@
     }
     #modal-container {
         position: fixed;
-        bottom: 35%;
-        left: 35%;
+        bottom: 40%;
+        left: 40%;
     }
 </style>
