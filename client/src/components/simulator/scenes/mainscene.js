@@ -22,7 +22,7 @@ export default class MainScene extends Scene {
             this.headerText.text = "Simulating " + deck.name;
             console.log(deck);
             let newCard = new Card(this);
-            newCard.render(100, 100);
+            newCard.render(100, 100, deck.name);
         });
 
         this.input.on('drag', (pointer, gameObject, dragX, dragY) => {

@@ -8,10 +8,6 @@ io.on('connection', function (socket) {
 
     players.push(socket.id);
 
-    if (players.length === 1) {
-        io.emit('isPlayerA');
-    };
-
     socket.on('exportDeck', function (deck) {
         io.emit('importDeck', deck);
     })
