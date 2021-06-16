@@ -11,7 +11,7 @@
             </div>
             <div v-show="toggle === 'viewGame'">
                 <div id="view-game">
-                    <p><b-button pill variant="secondary" v-on:click="changeToggle('allGames')">Back to Games</b-button></p>
+                    <p><b-button pill variant="secondary" v-show="this.$store.state.containerShowing===false" v-on:click="changeToggle('allGames')">Back to Games</b-button></p>
                     <Containers @displayModal = "displayModal" />
                 </div>
             </div>

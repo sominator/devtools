@@ -54,6 +54,7 @@
                     this.changeToggle("viewDeck");
                 }
                 this.$store.commit("selectContainer", containerId);
+                this.$store.commit('toggleContainerShowing');
             }
         }
     }
@@ -61,7 +62,7 @@
 
 <style scoped>
     .modal-showing {
-        opacity: 0.3;
+        opacity: 1;
     }
     #all-containers {
         text-align: center;

@@ -30,17 +30,18 @@
         methods: {
             changeToggle: function (toggle) {
                 this.$emit('changeToggle', toggle);
+                this.$store.commit('toggleContainerShowing');
             },
             displayModal: function (modalName) {
                 this.$emit('displayModal', modalName)
-            }
+            },
         }
     }
 </script>
 
 <style scoped>
     .modal-showing {
-        opacity: 0.3;
+        opacity: 1;
     }
     #all-mechanics {
         text-align: center;

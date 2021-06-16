@@ -10,6 +10,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        containerShowing: false,
         gamesId: 0,
         games: {},
         modalState: false,
@@ -91,6 +92,9 @@ const store = new Vuex.Store({
         },
         selectContainer(state, containerId) {
             state.selectedContainerId = containerId;
+        },
+        toggleContainerShowing(state) {
+            state.containerShowing = !state.containerShowing;
         }
     }
 })
