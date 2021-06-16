@@ -12,13 +12,9 @@ io.on('connection', function (socket) {
         io.emit('isPlayerA');
     };
 
-    socket.on('dealCards', function () {
-        io.emit('dealCards');
-    });
-
-    socket.on('cardPlayed', function (gameObject, isPlayerA) {
-        io.emit('cardPlayed', gameObject, isPlayerA);
-    });
+    socket.on('exportDeck', function (deck) {
+        io.emit('importDeck', deck);
+    })
 
     socket.on('disconnect', function () {
         console.log('A user disconnected: ' + socket.id);

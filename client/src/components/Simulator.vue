@@ -1,5 +1,5 @@
 <template>
-    <div :id="containerId" v-if="downloaded" />
+    <div :id="containerId" v-if="downloaded" class="simulator" />
     <div class="placeholder" v-else>
         Starting simulator!
     </div>
@@ -29,7 +29,10 @@
 </script>
 
 <style scoped>
-    #card-simulator{
+    #simulator {
+        text-align: center;
         margin-top: 20px;
+        min-width: 100vw;
+        min-height: 80vh;
     }
 </style>
