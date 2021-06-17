@@ -4,8 +4,11 @@
     "\\client",
     "\\client\\src",
     "\\client\\src\\components",
-    "\\client\\src\\components\\modals"
+    "\\client\\src\\components\\modals",
+    "\\client\\src\\components\\simulator",
+    "\\client\\src\\components\\simulator\\helpers",
+    "\\client\\src\\components\\simulator\\scenes"
   ],
-  "SelectedNode": "\\client\\src\\components\\Containers.vue",
+  "SelectedNode": "\\server.js",
   "PreviewInSolutionExplorer": false
 }

@@ -53,20 +53,20 @@ const store = new Vuex.Store({
                     name: container.name,
                     description: container.description,
                     type: container.type,
-                    decksId: 0,
-                    decks: {}
+                    cardsId: 0,
+                    cards: {}
                 }
             }
             store.getters.selectedGame.containersId++;
             console.log(state.games);
         },
         createCard(state, card) {
-            store.getters.selectedContainer.decks[store.getters.selectedContainer.decksId] = {
-                id: store.getters.selectedContainer.decksId,
+            store.getters.selectedContainer.cards[store.getters.selectedContainer.cardsId] = {
+                id: store.getters.selectedContainer.cardsId,
                 name: card.name,
                 description: card.description
             }
-            store.getters.selectedContainer.decksId++;
+            store.getters.selectedContainer.cardsId++;
             console.log(state.games);
         },
         createMechanic(state, mechanic) {

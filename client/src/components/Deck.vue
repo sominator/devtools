@@ -9,7 +9,7 @@
                 </p>
                 <div id="all-cards" v-if="this.$store.state.selectedContainerId !== null">
                     <b-card-group deck>
-                        <Card v-for="card in this.$store.getters.selectedContainer.decks" :key="card.id" :card="card" />
+                        <Card v-for="card in this.$store.getters.selectedContainer.cards" :key="card.id" :card="card" />
                     </b-card-group>
                 </div>
             </div>
