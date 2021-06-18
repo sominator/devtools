@@ -14,6 +14,11 @@
                     <Deck @displayModal="displayModal" @changeToggle="changeToggle" />
                 </div>
             </div>
+            <div v-show="toggle === 'viewList'">
+                <div class="view-container">
+                    <List @displayModal="displayModal" @changeToggle="changeToggle" />
+                </div>
+            </div>
             <div v-show="toggle === 'viewMechanicsGroup'">
                 <div class="view-container">
                     <Mechanics @displayModal="displayModal" @changeToggle="changeToggle" />
@@ -26,6 +31,7 @@
 <script>
     import Container from './Container.vue';
     import Deck from './Deck.vue';
+    import List from './List.vue';
     import Mechanics from './Mechanics.vue';
 
     export default {
@@ -33,6 +39,7 @@
         components: {
             Container,
             Deck,
+            List,
             Mechanics
         },
         data: function () {
@@ -48,11 +55,13 @@
                 this.$emit('displayModal', modalName)
             },
             selectContainer: function (containerId, containerType) {
-                if (containerType === "mechanics-group") {
-                    this.changeToggle("viewMechanicsGroup");
-                } else if (containerType === "deck") {
+                if (containerType === "deck") {
                     this.changeToggle("viewDeck");
-                }
+                } else if (containerType === "list") {
+                    this.changeToggle("viewList");
+                } else if (containerType === "mechanics-group") {
+                    this.changeToggle("viewMechanicsGroup");
+                } 
                 this.$store.commit("selectContainer", containerId);
                 this.$store.commit('toggleContainerShowing');
             }

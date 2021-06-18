@@ -9,8 +9,9 @@
             </b-form-group>
             <b-form-group id="input-group-3" label="Container Type:" label-for="input-3">
                 <b-form-radio-group id="input-3" v-model = "container.type" required>
+                    <b-form-radio value="deck">Deck</b-form-radio>
+                    <b-form-radio value="list">List</b-form-radio>
                     <b-form-radio value = "mechanics-group">Mechanics Group</b-form-radio>
-                    <b-form-radio value = "deck">Deck</b-form-radio>
                 </b-form-radio-group>
             </b-form-group>
             <b-button type="submit" variant="info">Add Container</b-button>

@@ -14,6 +14,7 @@
                 <CreateGame v-if="modalToggle === 'createGame'" @createGame="createGame" @cancelModal="cancelModal" />
                 <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer="createContainer" @cancelModal="cancelModal" />
                 <CreateCard v-else-if="modalToggle === 'createCard'" @createCard="createCard" @cancelModal="cancelModal" />
+                <CreateListItem v-else-if="modalToggle === 'createListItem'" @createListItem="createListItem" @cancelModal="cancelModal" />
                 <CreateMechanic v-else-if="modalToggle === 'createMechanic'" @createMechanic="createMechanic" @cancelModal="cancelModal" />
             </div>
         </div>
@@ -29,7 +30,8 @@
     import CreateGame from './components/modals/CreateGame.vue';
     import CreateContainer from './components/modals/CreateContainer.vue';
     import CreateCard from './components/modals/CreateCard.vue';
-    import CreateMechanic from './components/modals/CreateMechanic.vue'; 
+    import CreateListItem from './components/modals/CreateListItem.vue';
+    import CreateMechanic from './components/modals/CreateMechanic.vue';
 
     export default {
         name: 'App',
@@ -39,6 +41,7 @@
             CreateGame,
             CreateContainer,
             CreateCard,
+            CreateListItem,
             CreateMechanic
         },
         data: function () {
@@ -62,6 +65,10 @@
             },
             createCard: function (card) {
                 this.$store.commit('createCard', card);
+                this.cancelModal();
+            },
+            createListItem: function (listItem) {
+                this.$store.commit('createListItem', listItem);
                 this.cancelModal();
             },
             createMechanic: function (mechanic) {

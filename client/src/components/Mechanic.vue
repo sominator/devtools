@@ -8,7 +8,7 @@
                     <span v-else>{{mechanic.x}}d{{mechanic.diceModel}}{{mechanic.y}}</span>
                 </p>
             </b-card-text>
-            <b-button variant="secondary" @click="roll">Roll Mechanic</b-button>
+            <b-button variant="danger" @click="roll">Roll Mechanic</b-button>
             <br /><br />
             <p>{{output}}</p>
             <template #footer><em>{{mechanic.description}}</em></template>
@@ -39,6 +39,7 @@
 <style scoped>
     #mechanic {
         min-width: 400px;
+        max-width: 400px;
         margin-bottom: 30px;
     }
 </style>

@@ -29,6 +29,7 @@
 <style scoped>
     #game {
         min-width: 400px;
+        max-width: 400px;
         margin-bottom: 30px;
     }
 </style>

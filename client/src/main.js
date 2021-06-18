@@ -35,19 +35,9 @@ const store = new Vuex.Store({
                 containers: {}
             };
             state.gamesId++;
-            console.log(state.games);
         },
         createContainer(state, container) {
-            if (container.type === "mechanics-group") {
-                store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
-                    id: store.getters.selectedGame.containersId,
-                    name: container.name,
-                    description: container.description,
-                    type: container.type,
-                    mechanicsId: 0,
-                    mechanics: {}
-                }
-            } else if (container.type === "deck") {
+            if (container.type === "deck") {
                 store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
                     id: store.getters.selectedGame.containersId,
                     name: container.name,
@@ -56,9 +46,26 @@ const store = new Vuex.Store({
                     cardsId: 0,
                     cards: {}
                 }
-            }
+            } else if (container.type === "list") {
+                store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
+                    id: store.getters.selectedGame.containersId,
+                    name: container.name,
+                    description: container.description,
+                    type: container.type,
+                    listItemsId: 0,
+                    listItems: {}
+                }
+            } else if (container.type === "mechanics-group") {
+                store.getters.selectedGame.containers[store.getters.selectedGame.containersId] = {
+                    id: store.getters.selectedGame.containersId,
+                    name: container.name,
+                    description: container.description,
+                    type: container.type,
+                    mechanicsId: 0,
+                    mechanics: {}
+                }
+            } 
             store.getters.selectedGame.containersId++;
-            console.log(state.games);
         },
         createCard(state, card) {
             store.getters.selectedContainer.cards[store.getters.selectedContainer.cardsId] = {
@@ -67,7 +74,14 @@ const store = new Vuex.Store({
                 description: card.description
             }
             store.getters.selectedContainer.cardsId++;
-            console.log(state.games);
+        },
+        createListItem(state, listItem) {
+            store.getters.selectedContainer.listItems[store.getters.selectedContainer.listItemsId] = {
+                id: store.getters.selectedContainer.listItemsId,
+                name: listItem.name,
+                description: listItem.description
+            }
+            store.getters.selectedContainer.listItemsId++;
         },
         createMechanic(state, mechanic) {
             store.getters.selectedContainer.mechanics[store.getters.selectedContainer.mechanicsId] = {
@@ -79,7 +93,6 @@ const store = new Vuex.Store({
                 y: mechanic.y
             }
             store.getters.selectedContainer.mechanicsId++;
-            console.log(state.games);
         },
         modalActive (state) {
             state.modalState = true;

@@ -1,9 +1,9 @@
 <template>
     <div>
-        <b-card bg-variant="info" text-variant="white" header-tag="header" footer-tag="footer" id="card">
-            <template #header><h3>{{card.name}}</h3></template>
+        <b-card bg-variant="info" text-variant="white" header-tag="header" footer-tag="footer" id="list-item">
+            <template #header><h3>{{listItem.name}}</h3></template>
             <b-card-text>
-                <p><em>{{card.description}}</em></p>
+                <p><em>{{listItem.description}}</em></p>
             </b-card-text>
         </b-card>
     </div>
@@ -11,9 +11,9 @@
 
 <script>
     export default {
-        name: 'Card',
+        name: 'ListItem',
         props: {
-            card: Object
+            listItem: Object
         }
     }
 </script>
@@ -22,7 +22,7 @@
     p {
         text-align: left;
     }
-    #card {
+    #list-item {
         min-height: 400px;
         min-width: 400px;
         max-width: 400px;

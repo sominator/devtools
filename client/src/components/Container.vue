@@ -4,8 +4,9 @@
             <template #header>
                 <h3>{{container.name}}</h3>
             </template>
-            <b-button variant="secondary" v-if="container.type === 'mechanics-group'" @click="selectContainer">Select Mechanics Group</b-button>
             <b-button variant="secondary" v-if="container.type === 'deck'" @click="selectContainer">Select Deck</b-button>
+            <b-button variant="secondary" v-if="container.type === 'list'" @click="selectContainer">Select List</b-button>
+            <b-button variant="secondary" v-if="container.type === 'mechanics-group'" @click="selectContainer">Select Mechanics Group</b-button>
             <template #footer>
                 <em>{{container.description}}</em>
             </template>
@@ -30,6 +31,7 @@
 <style scoped>
     #container {
         min-width: 400px;
+        max-width: 400px;
         margin-bottom: 30px;
     }
     button {
