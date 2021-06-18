@@ -8,15 +8,17 @@
                 <b-button v-show="rootToggle==='games'" v-on:click="toggleRoot('simulator')">Simulator</b-button>
             </b-button-group>
         </div>
-        <div id="app-container">
-            <Games v-show="rootToggle === 'games'" @displayModal="displayModal" />
-            <Simulator v-show="rootToggle === 'simulator'" />
+        <div id="games-container" v-show="rootToggle === 'games'">
+            <Games @displayModal="displayModal" />
+            <div id="modal-container" v-show="modalToggle != null">
+                <CreateGame v-if="modalToggle === 'createGame'" @createGame="createGame" @cancelModal="cancelModal" />
+                <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer="createContainer" @cancelModal="cancelModal" />
+                <CreateCard v-else-if="modalToggle === 'createCard'" @createCard="createCard" @cancelModal="cancelModal" />
+                <CreateMechanic v-else-if="modalToggle === 'createMechanic'" @createMechanic="createMechanic" @cancelModal="cancelModal" />
+            </div>
         </div>
-        <div id="modal-container" v-show="modalToggle != null">
-            <CreateGame v-if="modalToggle === 'createGame'" @createGame="createGame" @cancelModal="cancelModal" />
-            <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer="createContainer" @cancelModal="cancelModal" />
-            <CreateCard v-else-if="modalToggle === 'createCard'" @createCard="createCard" @cancelModal="cancelModal" />
-            <CreateMechanic v-else-if="modalToggle === 'createMechanic'" @createMechanic="createMechanic" @cancelModal="cancelModal" />
+        <div id="simulator-container" v-show="rootToggle === 'simulator'">
+            <Simulator />
         </div>
     </div>
 </template>
@@ -91,7 +93,7 @@
         text-align: left;
         color: #2c3e50;
     }
-    #app-container {
+    #games-container {
         margin-top: 40px;
         margin-left: 20px;
     }
@@ -103,5 +105,9 @@
         position: fixed;
         bottom: 40%;
         left: 40%;
+    }
+    #simulator-container {
+        margin-top: 40px;
+        margin-left: 20px;
     }
 </style>
