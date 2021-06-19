@@ -41,12 +41,13 @@
                 this.$emit('displayModal', modalName)
             },
             exportDeck: function () {
-                socket.emit('exportDeck', this.$store.getters.selectedContainer);
+                socket.emit('exportDeck', this.$store.getters.selectedContainer, this.$store.state.roomId);
             }
         },
         created: function () {
             socket.on('connect', () => {
                 console.log("Vue connected!");
+                this.$store.commit('storeRoomId', socket.id);
             });
 
         }

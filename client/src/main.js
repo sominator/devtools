@@ -15,7 +15,8 @@ const store = new Vuex.Store({
         games: {},
         modalState: false,
         selectedGameId: null,
-        selectedContainerId: null
+        selectedContainerId: null,
+        roomId: null
     },
     getters: {
         selectedGame: state => {
@@ -105,6 +106,9 @@ const store = new Vuex.Store({
         },
         selectContainer(state, containerId) {
             state.selectedContainerId = containerId;
+        },
+        storeRoomId(state, socketId) {
+            state.roomId = socketId;
         },
         toggleContainerShowing(state) {
             state.containerShowing = !state.containerShowing;

@@ -6,7 +6,7 @@ export default class InteractivityHandler {
         scene.cardPreview = null;
 
         scene.dealPlayerCards.on('pointerdown', () => {
-            scene.socket.emit("dealPlayerCards");
+            scene.socket.emit("dealPlayerCards", scene.roomId);
         })
 
         scene.dealPlayerCards.on('pointerover', () => {
@@ -18,7 +18,7 @@ export default class InteractivityHandler {
         })
 
         scene.dealOpponentCards.on('pointerdown', () => {
-            scene.socket.emit("dealOpponentCards");
+            scene.socket.emit("dealOpponentCards", scene.roomId);
         })
 
         scene.dealOpponentCards.on('pointerover', () => {
@@ -30,7 +30,7 @@ export default class InteractivityHandler {
         })
 
         scene.shuffleDecks.on('pointerdown', () => {
-            scene.socket.emit('cleanUpCards', 'shuffle');
+            scene.socket.emit('cleanUpCards', 'shuffle', scene.roomId);
         })
 
         scene.shuffleDecks.on('pointerover', () => {
@@ -42,7 +42,7 @@ export default class InteractivityHandler {
         })
 
         scene.cleanUpCards.on('pointerdown', () => {
-            scene.socket.emit("cleanUpCards", "deal");
+            scene.socket.emit("cleanUpCards", "deal", scene.roomId);
         })
 
         scene.cleanUpCards.on('pointerover', () => {

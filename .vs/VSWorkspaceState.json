@@ -4,11 +4,10 @@
     "\\client",
     "\\client\\src",
     "\\client\\src\\components",
-    "\\client\\src\\components\\modals",
     "\\client\\src\\components\\simulator",
     "\\client\\src\\components\\simulator\\helpers",
     "\\client\\src\\components\\simulator\\scenes"
   ],
-  "SelectedNode": "\\server.js",
+  "SelectedNode": "\\client\\src\\components\\simulator\\helpers\\SocketHandler.js",
   "PreviewInSolutionExplorer": false
 }

@@ -2,10 +2,12 @@ import io from 'socket.io-client';
 import Card from './Card';
 
 export default class SocketHandler {
-    constructor(scene) {
+    constructor(scene, roomId) {
         scene.socket = io('http://localhost:3000');
+        scene.roomId = roomId;
         scene.socket.on('connect', () => {
             console.log('Phaser connected!');
+            scene.socket.emit('join', scene.roomId);
         })
         scene.socket.on('importDeck', (deckName) => {
             scene.headerText.text = "Simulating " + deckName;
@@ -13,7 +15,7 @@ export default class SocketHandler {
             scene.dealOpponentCards.text = "Deal Player B Cards";
             scene.shuffleDecks.text = "Shuffle Decks";
             scene.cleanUpCards.text = "Clean Up Cards";
-            scene.socket.emit('cleanUpCards', 'deal');
+            scene.socket.emit('cleanUpCards', 'deal', scene.roomId);
         });
 
         scene.socket.on('dealDecks', (deck) => {
@@ -32,6 +34,7 @@ export default class SocketHandler {
                 scene.playerCards[card].y = 860
                 scene.cardsInPlayerHand++;
             }
+            scene.cardsInPlayerHand = 0;
         })
 
         scene.socket.on('dealOpponentCards', () => {
@@ -40,6 +43,7 @@ export default class SocketHandler {
                 scene.opponentCards[card].y = 200
                 scene.cardsInOpponentHand++;
             }
+            scene.cardsInOpponentHand = 0;
         })
 
         scene.socket.on('shuffleDecks', (shuffledDeck) => {
@@ -63,9 +67,9 @@ export default class SocketHandler {
             scene.cardsInPlayerHand = 0;
             scene.cardsInOpponentHand = 0;
             if (type === "deal") {
-                scene.socket.emit('dealDecks');
+                scene.socket.emit('dealDecks', scene.roomId);
             } else if (type === "shuffle") {
-                scene.socket.emit('shuffleDecks');
+                scene.socket.emit('shuffleDecks', scene.roomId);
             }
 
         })

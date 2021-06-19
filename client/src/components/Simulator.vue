@@ -10,16 +10,16 @@
         name: 'Simulator',
         data: function () {
             return {
+                containerId: 'simulator',
                 downloaded: false,
-                gameInstance: null,
-                containerId: 'simulator'
+                gameInstance: null
             }
         },
         async mounted() {
             const game = await import('./simulator/simulator');
             this.downloaded = true;
             this.$nextTick(() => {
-                this.gameInstance = game.launch(this.containerId);
+                this.gameInstance = game.launch(this.containerId, this.$store.state.roomId);
             })
         },
         destroyed() {

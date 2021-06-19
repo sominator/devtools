@@ -4,8 +4,9 @@ import UIHandler from '../helpers/UIHandler';
 import SocketHandler from '../helpers/SocketHandler';
 
 export default class MainScene extends Scene {
-    constructor () {
+    constructor (roomId) {
         super({ key: 'MainScene' });
+        this.roomId = roomId;
     }
 
     preload() {
@@ -21,7 +22,6 @@ export default class MainScene extends Scene {
 
         this.UIHandler = new UIHandler(this);
         this.InteractivityHandler = new InteractivityHandler(this);
-        this.SocketHandler = new SocketHandler(this);
-
+        this.SocketHandler = new SocketHandler(this, this.roomId);
     }
 }
