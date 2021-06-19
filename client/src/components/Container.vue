@@ -30,11 +30,15 @@
 
 <style scoped>
     #container {
-        min-width: 400px;
-        max-width: 400px;
+        width: 30vw;
         margin-bottom: 30px;
     }
     button {
         min-width: 200px;
+    }
+    @media screen and (max-width: 900px) {
+        #container {
+            width: 50vw;
+        }
     }
 </style>

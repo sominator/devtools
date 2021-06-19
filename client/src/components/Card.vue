@@ -23,9 +23,14 @@
         text-align: left;
     }
     #card {
-        min-height: 400px;
-        min-width: 400px;
-        max-width: 400px;
+        min-height: 30vw;
+        width: 30vw;
         margin-bottom: 30px;
+    }
+    @media screen and (max-width: 900px) {
+        #card {
+            min-height: 50vw;
+            width: 50vw;
+        }
     }
 </style>

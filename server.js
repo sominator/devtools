@@ -15,8 +15,6 @@ const io = require("socket.io")(http, {
 server.use(cors());
 //server.use(serveStatic(__dirname + "/client/dist"));
 let rooms = {};
-let newDeck = [];
-let newDeckName = "";
 
 io.on('connection', function (socket) {
     console.log('A user connected: ' + socket.id);

@@ -21,6 +21,14 @@
         <div id="simulator-container" v-show="rootToggle === 'simulator'">
             <Simulator />
         </div>
+        <div id="img-footer">
+            <a href="https://www.nightpathpub.com" target="_blank">
+                <img src="./assets/Nightpath-Publishing-Logo-Blue-White-Stacked.png" alt="Nightpath Publishing Logo"/>
+            </a>
+            <a href="mailto:info@entromancy.com">
+                <p style="color: #f8f9fa; margin-right: 1vw; margin-top: 1vh">Send Us Feedback!</p>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -93,16 +101,27 @@
     button:focus{
         background-color: #17a2b8;
     }
+    img {
+        width: 7%;
+        height: auto;
+        margin-right: 2vw;
+    }
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: left;
         color: #2c3e50;
+        min-height: 100vh;
     }
     #games-container {
         margin-top: 40px;
         margin-left: 20px;
+    }
+    #img-footer {
+        position: fixed;
+        bottom: 2vh;
+        text-align: right;
     }
     #menu-container {
         margin-top: 40px;
@@ -110,11 +129,19 @@
     }
     #modal-container {
         position: fixed;
-        bottom: 40%;
-        left: 40%;
+        top: 30%;
+        left: 42%;
     }
     #simulator-container {
         margin-top: 40px;
         margin-left: 20px;
+    }
+    @media screen and (max-width: 900px) {
+        #menu-container {
+            margin-left: 35px;
+        }
+        #modal-container {
+            left: 20%;
+        }
     }
 </style>

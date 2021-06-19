@@ -28,8 +28,12 @@
 
 <style scoped>
     #game {
-        min-width: 400px;
-        max-width: 400px;
+        width: 30vw;
         margin-bottom: 30px;
+    }
+    @media screen and (max-width: 900px) {
+        #game {
+            width: 50vw;
+        }
     }
 </style>

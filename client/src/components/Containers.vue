@@ -77,4 +77,9 @@
         text-align: center;
         display: flex;
     }
+    @media screen and (max-width: 900px) {
+        #all-containers {
+            justify-content: center;
+        }
+    }
 </style>

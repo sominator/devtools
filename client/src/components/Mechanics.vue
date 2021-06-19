@@ -47,4 +47,9 @@
         text-align: center;
         display: flex;
     }
+    @media screen and (max-width: 900px) {
+        #all-mechanics {
+            justify-content: center;
+        }
+    }
 </style>

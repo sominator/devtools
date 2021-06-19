@@ -26,7 +26,7 @@
                         </template>
                     </b-modal>
                 </p>
-                <div id="all-lists" v-if="this.$store.state.selectedContainerId !== null">
+                <div id="all-list-items" v-if="this.$store.state.selectedContainerId !== null">
                     <b-card-group deck>
                         <ListItem v-for="listItem in this.$store.getters.selectedContainer.listItems" :key="listItem.id" :listItem="listItem" />
                     </b-card-group>
@@ -84,5 +84,10 @@
     #all-list-items {
         text-align: center;
         display: flex;
+    }
+    @media screen and (max-width: 900px) {
+        #all-list-items {
+            justify-content: center;
+        }
     }
 </style>

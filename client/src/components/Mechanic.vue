@@ -38,8 +38,12 @@
 
 <style scoped>
     #mechanic {
-        min-width: 400px;
-        max-width: 400px;
+        width: 30vw;
         margin-bottom: 30px;
+    }
+    @media screen and (max-width: 900px) {
+        #mechanic {
+            width: 50vw;
+        }
     }
 </style>

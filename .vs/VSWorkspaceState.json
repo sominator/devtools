@@ -2,12 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\client",
+    "\\client\\public",
     "\\client\\src",
-    "\\client\\src\\components",
-    "\\client\\src\\components\\simulator",
-    "\\client\\src\\components\\simulator\\helpers",
-    "\\client\\src\\components\\simulator\\scenes"
+    "\\client\\src\\components"
   ],
-  "SelectedNode": "\\client\\src\\components\\simulator\\helpers\\SocketHandler.js",
+  "SelectedNode": "\\client\\public\\index.html",
   "PreviewInSolutionExplorer": false
 }

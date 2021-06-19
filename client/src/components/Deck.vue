@@ -65,4 +65,9 @@
         text-align: center;
         display: flex;
     }
+    @media screen and (max-width: 900px) {
+        #all-cards {
+            justify-content: center;
+        }
+    }
 </style>
