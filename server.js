@@ -14,7 +14,7 @@ const io = require("socket.io")(http, {
 
 server.use(cors());
 //server.use(serveStatic(__dirname + "/client/dist"));
-//need rooms = { decks: {} }
+let rooms = {};
 let newDeck = [];
 let newDeckName = "";
 
@@ -22,22 +22,25 @@ io.on('connection', function (socket) {
     console.log('A user connected: ' + socket.id);
 
     socket.on('join', function (roomId) {
-        room = roomId;
+        rooms[roomId] = {
+            deck: [],
+            deckName: ""
+        };
         socket.join(roomId);
         console.log(roomId);
     })
 
     socket.on('exportDeck', function (deck, roomId) {
-        newDeck = [];
-        newDeckName = deck.name;
+        rooms[roomId].deck = [];
+        rooms[roomId].deckName = deck.name;
         for (const [key, card] of Object.entries(deck.cards)) {
-            newDeck.push(card);
+            rooms[roomId].deck.push(card);
         }
-        io.to(roomId).emit('importDeck', newDeckName);
+        io.to(roomId).emit('importDeck', rooms[roomId].deckName);
     })
 
     socket.on('dealDecks', function (roomId) {
-        io.to(roomId).emit('dealDecks', newDeck);
+        io.to(roomId).emit('dealDecks', rooms[roomId].deck);
     })
 
     socket.on('dealPlayerCards', function (roomId) {
@@ -49,8 +52,8 @@ io.on('connection', function (socket) {
     })
 
     socket.on('shuffleDecks', function (roomId) {
-        if (newDeck !== []) {
-            let deck = newDeck;
+        if (rooms[roomId].deck !== []) {
+            let deck = rooms[roomId].deck;
             let shuffledDeck = shuffle(deck);
             io.to(roomId).emit('shuffleDecks', shuffledDeck);
         }
@@ -62,8 +65,6 @@ io.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         console.log('A user disconnected: ' + socket.id);
-        newDeck = [];
-        newDeckName = "";
     });
 });
 
