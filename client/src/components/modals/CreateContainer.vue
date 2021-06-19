@@ -2,10 +2,10 @@
     <div id="create-container">
         <b-form @submit="onSubmit">
             <b-form-group id="input-group-1" label="Container Name:" label-for="input-1">
-                <b-form-input id="input-1" v-model="container.name" placeholder="e.g. 'Container 1'" required></b-form-input>
+                <b-form-input id="input-1" v-model="container.name" placeholder="e.g. 'Core Deck' or 'NPC List'" required></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-2" label="Container Description:" label-for="input-2">
-                <b-form-input id="input-2" v-model="container.description" placeholder="e.g. 'New Container'" required></b-form-input>
+                <b-form-input id="input-2" v-model="container.description" placeholder="e.g. 'List of all local NPCs'" required></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-3" label="Container Type:" label-for="input-3">
                 <b-form-radio-group id="input-3" v-model = "container.type" required>

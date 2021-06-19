@@ -2,10 +2,10 @@
     <div id="create-mechanic">
         <b-form @submit="onSubmit">
             <b-form-group id="input-group-1" label="Mechanic Name:" label-for="input-1">
-                <b-form-input id="input-1" v-model="mechanic.name" placeholder="e.g. 'Mechanic 1'" required></b-form-input>
+                <b-form-input id="input-1" v-model="mechanic.name" placeholder="e.g. 'Athletics Check'" required></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-2" label="Mechanic Description:" label-for="input-2">
-                <b-form-input id="input-2" v-model="mechanic.description" placeholder="e.g. 'New Mechanic'" required></b-form-input>
+                <b-form-input id="input-2" v-model="mechanic.description" placeholder="e.g. 'Core class skill check.'" required></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-3" label="Dice Model:" label-for="input-3">
                 <b-container fluid>
