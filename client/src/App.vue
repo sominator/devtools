@@ -28,7 +28,7 @@
             </div>
         </div>
         <div id="simulator-container" v-show="rootToggle === 'simulator'">
-            <Simulator />
+            <Simulator v-if="this.$store.state.roomId !== null"/>
         </div>
         <div id="img-footer">
             <a href="https://www.nightpathpub.com" target="_blank">
