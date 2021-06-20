@@ -164,7 +164,6 @@
             width: 15%;
         }
         #img-footer {
-            position: relative;
             font-size: 12px;
         }
         #menu-container {
