@@ -87,7 +87,7 @@
     }
     @media screen and (max-width: 900px) {
         button {
-            margin-top: 5px;
+            margin-bottom: 10px;
         }
         #all-list-items {
             justify-content: center;

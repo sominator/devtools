@@ -7,8 +7,10 @@
             <b-form-group id="input-group-2" label="Card Description:" label-for="input-2">
                 <b-form-input id="input-2" v-model="card.description" placeholder="e.g. 'Deals 1d6 damage.'" required></b-form-input>
             </b-form-group>
-            <b-button type="submit" variant="info">Add Card</b-button>
-            <b-button variant="danger" @click="onCancel">Cancel</b-button>
+            <div id="button-footer">
+                <b-button type="submit" variant="info">Add Card</b-button>
+                <b-button variant="danger" @click="onCancel">Cancel</b-button>
+            </div>
         </b-form>
     </div>
 </template>
@@ -46,5 +48,13 @@
     }
     button {
         margin-right: 10px;
+    }
+    @media screen and (max-width: 900px) {
+        button {
+            margin-top: 10px;
+        }
+        #button-footer {
+            text-align: center;
+        }
     }
 </style>
