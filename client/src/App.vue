@@ -21,7 +21,7 @@
         <div id="simulator-container" v-show="rootToggle === 'simulator'">
             <Simulator v-if="this.$store.state.roomId !== null"/>
         </div>
-        <div id="img-footer" v-show="!this.$store.state.modalState">
+        <div id="img-footer" v-show="!this.$store.state.modalState && rootToggle==='games'">
             <a href="https://www.nightpathpub.com" target="_blank">
                 <img src="./assets/Nightpath-Publishing-Logo-Blue-White-Stacked.png" alt="Nightpath Publishing Logo"/>
             </a>

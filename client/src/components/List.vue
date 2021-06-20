@@ -2,7 +2,7 @@
     <div>
         <div id="deck-container" v-bind:class="{'modal-showing': this.$store.state.modalState}">
             <div v-show="toggle==='allListItems'">
-                <p><b-button pill variant="secondary" v-on:click="changeToggle('allContainers')">Back to Containers</b-button></p>
+                <p><b-button pill variant="secondary" id="container-button" v-on:click="changeToggle('allContainers')">Back to Containers</b-button></p>
                 <p>
                     <b-button pill variant="secondary" v-on:click="displayModal('createListItem')">+ Create List Item</b-button>
                     <b-button pill variant="danger" v-if="this.$store.state.selectedContainerId !== null" v-on:click="randomListItem">Select a Random List Item</b-button>
@@ -91,6 +91,9 @@
         }
         #all-list-items {
             justify-content: center;
+        }
+        #container-button {
+            margin-bottom: -5px;
         }
     }
 </style>
