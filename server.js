@@ -7,7 +7,7 @@ const shuffle = require('shuffle-array');
 
 const io = require("socket.io")(http, {
     cors: {
-        origin: "http://localhost:8080/",
+        origin: "https://ttrpg-dev-tools.herokuapp.com/",
         methods: ["GET", "POST"]
     }
 });
