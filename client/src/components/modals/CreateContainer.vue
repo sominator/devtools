@@ -14,8 +14,10 @@
                     <b-form-radio value = "mechanics-group">Mechanics Group</b-form-radio>
                 </b-form-radio-group>
             </b-form-group>
-            <b-button type="submit" variant="info">Add Container</b-button>
-            <b-button variant="danger" @click="onCancel">Cancel</b-button>
+            <div id="button-footer">
+                <b-button type="submit" variant="info">Add Container</b-button>
+                <b-button variant="danger" @click="onCancel">Cancel</b-button>
+            </div>
         </b-form>
     </div>
 </template>
@@ -54,5 +56,13 @@
     }
     button {
         margin-right: 10px;
+    }
+    @media screen and (max-width: 900px) {
+        button {
+            margin-top: 10px;
+        }
+        #button-footer {
+            text-align: center;
+        }
     }
 </style>

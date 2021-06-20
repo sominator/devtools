@@ -10,16 +10,7 @@
         </div>
         <div id="games-container" v-show="rootToggle === 'games'">
             <Games @displayModal="displayModal" />
-            <div 
-                 id="modal-container" 
-                 v-bind:class="{
-                 'modal-create-card': modalToggle === 'createCard',
-                 'modal-create-container': modalToggle === 'createContainer',
-                 'modal-create-game': modalToggle === 'createGame',
-                 'modal-create-list-item': modalToggle === 'createListItem',
-                 'modal-create-mechanic': modalToggle === 'createMechanic'
-                 }" 
-                 v-show="modalToggle != null">
+            <div id="modal-container" v-show="modalToggle != null">
                 <CreateGame v-if="modalToggle === 'createGame'" @createGame="createGame" @cancelModal="cancelModal" />
                 <CreateContainer v-else-if="modalToggle === 'createContainer'" @createContainer="createContainer" @cancelModal="cancelModal" />
                 <CreateCard v-else-if="modalToggle === 'createCard'" @createCard="createCard" @cancelModal="cancelModal" />
@@ -30,7 +21,7 @@
         <div id="simulator-container" v-show="rootToggle === 'simulator'">
             <Simulator v-if="this.$store.state.roomId !== null"/>
         </div>
-        <div id="img-footer">
+        <div id="img-footer" v-show="!this.$store.state.modalState">
             <a href="https://www.nightpathpub.com" target="_blank">
                 <img src="./assets/Nightpath-Publishing-Logo-Blue-White-Stacked.png" alt="Nightpath Publishing Logo"/>
             </a>
@@ -107,21 +98,7 @@
     .root-selected {
         background-color: #17a2b8;
     }
-    .modal-create-card {
-        left: 42vw;
-    }
-    .modal-create-container {
-        left: 39vw;
-    }
-    .modal-create-game {
-        left: 42vw;
-    }
-    .modal-create-list-item {
-        left: 42vw;
-    }
-    .modal-create-mechanic {
-        left: 35vw;
-    }
+
     button:focus{
         background-color: #17a2b8;
     }
@@ -153,7 +130,9 @@
     }
     #modal-container {
         position: fixed;
-        top: 30%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     #simulator-container {
         margin-top: 40px;
@@ -168,21 +147,6 @@
         }
         #menu-container {
             margin-left: 35px;
-        }
-        .modal-create-card {
-            left: 28vw;
-        }
-        .modal-create-container {
-            left: 20vw;
-        }
-        .modal-create-game {
-            left: 28vw;
-        }
-        .modal-create-list-item {
-            left: 28vw;
-        }
-        .modal-create-mechanic {
-            left: 3vw;
         }
     }
 </style>

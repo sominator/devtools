@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\client",
-    "\\client\\public",
-    "\\client\\src",
-    "\\client\\src\\components"
+    "\\client\\src\\components\\simulator"
   ],
-  "SelectedNode": "\\client\\public\\index.html",
+  "SelectedNode": "\\client",
   "PreviewInSolutionExplorer": false
 }

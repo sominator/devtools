@@ -86,6 +86,9 @@
         display: flex;
     }
     @media screen and (max-width: 900px) {
+        button {
+            margin-top: 5px;
+        }
         #all-list-items {
             justify-content: center;
         }

@@ -34,11 +34,14 @@
         margin-bottom: 30px;
     }
     button {
-        min-width: 200px;
+        min-width: 40%;
     }
     @media screen and (max-width: 900px) {
         #container {
             width: 50vw;
+        }
+        button {
+            min-width: 90%;
         }
     }
 </style>
