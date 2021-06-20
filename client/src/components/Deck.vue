@@ -46,7 +46,7 @@
         },
         created: function () {
             socket.on('connect', () => {
-                console.log("Vue connected!");
+                console.log("Vue connected! " + socket.id);
                 this.$store.commit('storeRoomId', socket.id);
             });
 

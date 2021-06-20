@@ -6,7 +6,7 @@ export default class SocketHandler {
         scene.socket = io('https://ttrpg-dev-tools.herokuapp.com/');
         scene.roomId = roomId;
         scene.socket.on('connect', () => {
-            console.log('Phaser connected!');
+            console.log('Phaser connected! ' + roomId);
             scene.socket.emit('join', scene.roomId);
         })
         scene.socket.on('importDeck', (deckName) => {
