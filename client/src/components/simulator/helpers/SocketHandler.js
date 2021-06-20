@@ -3,7 +3,7 @@ import Card from './Card';
 
 export default class SocketHandler {
     constructor(scene, roomId) {
-        scene.socket = io('http://localhost:3000');
+        scene.socket = io('https://ttrpg-dev-tools.herokuapp.com/');
         scene.roomId = roomId;
         scene.socket.on('connect', () => {
             console.log('Phaser connected!');

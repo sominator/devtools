@@ -20,7 +20,7 @@
 <script>
     import Card from './Card.vue';
     import io from 'socket.io-client';
-    let socket = io('http://localhost:3000');
+    let socket = io('https://ttrpg-dev-tools.herokuapp.com/');
 
     export default {
         name: 'Deck',
